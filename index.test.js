@@ -1,4 +1,4 @@
-const { reverseWords, titleCase, oddishOrEvenish } = require(".");
+const { reverseWords, titleCase, oddishOrEvenish, at, fizzBuzz } = require(".");
 
 describe("reverseWords", () => {
   it("should reverse the words of a sentence", () => {
@@ -10,5 +10,31 @@ describe("reverseWords", () => {
   it("return odd or even", () => {
     expect(oddishOrEvenish("121")).toBe("Evenish");
     expect(oddishOrEvenish("41")).toBe("Oddish");
+  });
+  it("return the letter at index", () => {
+    expect(at(["a", "b", "c", "d", "e"], 1)).toBe("b");
+    expect(at(["a", "b", "c", "d", "e"], -2)).toBe("d");
+  });
+  it("return the letter at index", () => {
+    expect(
+      fizzBuzz([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
+    ).toEqual([
+      1,
+      2,
+      "Fizz",
+      4,
+      "Buzz",
+      "Fizz",
+      7,
+      8,
+      "Fizz",
+      "Buzz",
+      11,
+      "Fizz",
+      13,
+      14,
+      "FizzBuzz",
+      16,
+    ]);
   });
 });

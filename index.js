@@ -20,4 +20,25 @@ function oddishOrEvenish(number) {
     return "Evenish";
   }
 }
-module.exports = { reverseWords, titleCase, oddishOrEvenish };
+function at(arr, index) {
+  if (index > 0) {
+    return arr[index];
+  } else {
+    return arr[arr.length + index];
+  }
+}
+function fizzBuzz(arr) {
+  const newArr = arr.map((num) => {
+    if (num % 3 === 0 && num % 5 === 0) {
+      return "FizzBuzz";
+    } else if (num % 3 === 0) {
+      return "Fizz";
+    } else if (num % 5 === 0) {
+      return "Buzz";
+    } else {
+      return num;
+    }
+  });
+  return newArr;
+}
+module.exports = { reverseWords, titleCase, oddishOrEvenish, at, fizzBuzz };
