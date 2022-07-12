@@ -28,16 +28,24 @@ function at(arr, index) {
   }
 }
 function fizzBuzz(arr) {
-  const newArr = arr.map((num) => {
-    if (num % 3 === 0 && num % 5 === 0) {
-      return "FizzBuzz";
-    } else if (num % 3 === 0) {
-      return "Fizz";
-    } else if (num % 5 === 0) {
-      return "Buzz";
-    } else {
-      return num;
-    }
+  //   const newArr = arr.map((num) => {
+  //     if (num % 3 === 0 && num % 5 === 0) {
+  //       return "FizzBuzz";
+  //     } else if (num % 3 === 0) {
+  //       return "Fizz";
+  //     } else if (num % 5 === 0) {
+  //       return "Buzz";
+  //     } else {
+  //       return num;
+  //     }
+  //   });
+  //   return newArr;
+  let newArr = [];
+  arr.map((num) => {
+    let word = "";
+    if (num % 3 === 0) word += "Fizz";
+    if (num % 5 === 0) word += "Buzz";
+    newArr.push(word || num);
   });
   return newArr;
 }
