@@ -70,7 +70,6 @@ function uniqueString(array) {
 }
 function uniqueCharacter(string) {
   const split = string.split("").sort();
-  console.log(split);
   let result = "";
   for (let i = 1; i < split.length - 1; i++) {
     let prev = split[i - 1];
@@ -81,6 +80,39 @@ function uniqueCharacter(string) {
   }
   return "_";
 }
+
+function equalSides(array) {
+  //[1,2,3,4,3,2,1]
+  //   for (let i = 0; i < array.length; i++) {
+  //     let left = array.slice(0, i).reduce((a, b) => a + b, 0);
+  //     console.log("left", left);
+  //     let right = array.slice(i + 1).reduce((a, b) => a + b, 0);
+  //     console.log("right", right);
+  //     if (left === right) return i;
+  //   }
+  let left = 0;
+  let right = array.reduce((a, b) => a + b, -array[0]);
+  for (let i = 0; i < array.length; i++) {
+    if (left === right) return i;
+    left += array[i];
+    right -= array[i + 1];
+  }
+}
+function isHappy(num) {
+  const seen = {};
+  while (true) {
+    const split = num
+      .toString()
+      .split("")
+      .map((digit) => digit ** 2)
+      .reduce((a, b) => a + b);
+    if (split === 1) return true;
+    if (seen[split]) return false;
+    seen[split] = true;
+    num = split;
+  }
+}
+
 module.exports = {
   reverseWords,
   titleCase,
@@ -90,4 +122,6 @@ module.exports = {
   anagrams,
   uniqueString,
   uniqueCharacter,
+  equalSides,
+  isHappy,
 };
