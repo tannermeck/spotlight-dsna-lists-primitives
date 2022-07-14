@@ -59,18 +59,21 @@ describe("reverseWords", () => {
     expect(
       uniqueString(["abc", "acb", "bac", "foo", "bca", "cab", "cba"])
     ).toBe("foo");
+    expect(
+      uniqueString(["foo", "acb", "bac", "abc", "bca", "cab", "cba"])
+    ).toBe("foo");
   });
-  it("should return the unique string", () => {
+  it.skip("should return the unique string", () => {
     expect(uniqueCharacter("abdacabad")).toBe("c");
     expect(uniqueCharacter("abacabaabacaba")).toBe("_");
     expect(uniqueCharacter("abacabad")).toBe("c");
   });
-  it("should find the equal side index", () => {
+  it.skip("should find the equal side index", () => {
     expect(equalSides([1, 2, 3, 4, 3, 2, 1])).toBe(3);
     expect(equalSides([1, 100, 50, -51, 1, 1])).toBe(1);
     expect(equalSides([20, 10, -80, 10, 10, 15, 35])).toBe(0);
   });
-  it("return true if happy", () => {
+  it.skip("return true if happy", () => {
     expect(isHappy(19)).toBe(true);
     // expect(isHappy(4)).toBe(false);
   });

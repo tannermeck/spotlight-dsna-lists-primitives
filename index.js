@@ -49,69 +49,29 @@ function fizzBuzz(arr) {
   return newArr;
 }
 function anagrams(one, two) {
-  const sort1 = one.split("").sort().join("");
-  const sort2 = two.split("").sort().join("");
-  if (sort1 === sort2) return true;
+  const split1 = one.split("").sort().join("");
+  const split2 = two.split("").sort().join("");
+  if (split1 === split2) return true;
   return false;
 }
 function uniqueString(array) {
-  const normalized = array.map((string) =>
-    [...new Set(string.toLowerCase())].sort().join("")
-  );
-  if (normalized[0] !== normalized[1] && normalized[1] === normalized[2]) {
-    return array[0];
-  }
-  const index = normalized.findIndex((string, i) => {
-    const prev = normalized[i - 1];
-    const next = normalized[i + 1];
-    return i !== 0 && string !== prev && string !== next;
+  let noDup = array.map((string) => {
+    const stringArr = string.toLowerCase().split("").sort();
+    return [...new Set(stringArr)].join("");
   });
-  return array[index];
-}
-function uniqueCharacter(string) {
-  const split = string.split("").sort();
-  let result = "";
-  for (let i = 1; i < split.length - 1; i++) {
-    let prev = split[i - 1];
-    let current = split[i];
-    let next = split[i + 1];
-
-    if (prev !== current && current !== next) return split[i];
-  }
-  return "_";
-}
-
-function equalSides(array) {
-  //[1,2,3,4,3,2,1]
-  //   for (let i = 0; i < array.length; i++) {
-  //     let left = array.slice(0, i).reduce((a, b) => a + b, 0);
-  //     console.log("left", left);
-  //     let right = array.slice(i + 1).reduce((a, b) => a + b, 0);
-  //     console.log("right", right);
-  //     if (left === right) return i;
-  //   }
-  let left = 0;
-  let right = array.reduce((a, b) => a + b, -array[0]);
   for (let i = 0; i < array.length; i++) {
-    if (left === right) return i;
-    left += array[i];
-    right -= array[i + 1];
+    let prev = noDup[i - 1];
+    let curr = noDup[i];
+    let next = noDup[i + 1];
+    if (prev !== curr && curr !== next) {
+      return array[i];
+    }
   }
 }
-function isHappy(num) {
-  const seen = {};
-  while (true) {
-    const split = num
-      .toString()
-      .split("")
-      .map((digit) => digit ** 2)
-      .reduce((a, b) => a + b);
-    if (split === 1) return true;
-    if (seen[split]) return false;
-    seen[split] = true;
-    num = split;
-  }
-}
+function uniqueCharacter(string) {}
+
+function equalSides(array) {}
+function isHappy(num) {}
 
 module.exports = {
   reverseWords,
