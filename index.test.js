@@ -1,4 +1,13 @@
-const { reverseWords, titleCase, oddishOrEvenish, at, fizzBuzz } = require(".");
+const {
+  reverseWords,
+  titleCase,
+  oddishOrEvenish,
+  at,
+  fizzBuzz,
+  anagrams,
+  uniqueString,
+  uniqueCharacter,
+} = require(".");
 
 describe("reverseWords", () => {
   it("should reverse the words of a sentence", () => {
@@ -36,5 +45,22 @@ describe("reverseWords", () => {
       "FizzBuzz",
       16,
     ]);
+  });
+  it("should return true if anagram", () => {
+    expect(anagrams("superintended", "unpredestined")).toBe(true);
+    expect(anagrams("pictorialness", "documentarily")).toBe(false);
+  });
+  it("should return the unique string", () => {
+    expect(
+      uniqueString(["Aa", "aaa", "aaaaa", "BbBb", "Aaaa", "AaAaAa", "a"])
+    ).toBe("BbBb");
+    expect(
+      uniqueString(["abc", "acb", "bac", "foo", "bca", "cab", "cba"])
+    ).toBe("foo");
+  });
+  it("should return the unique string", () => {
+    expect(uniqueCharacter("abdacabad")).toBe("c");
+    expect(uniqueCharacter("abacabaabacaba")).toBe("_");
+    expect(uniqueCharacter("abacabad")).toBe("c");
   });
 });

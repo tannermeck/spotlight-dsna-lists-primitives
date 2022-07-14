@@ -13,7 +13,6 @@ function oddishOrEvenish(number) {
   // [1, 2, 1]
   let total = 0;
   nums.map((num) => (total += +num));
-  console.log(total);
   if (total % 2 > 0) {
     return "Oddish";
   } else {
@@ -49,4 +48,46 @@ function fizzBuzz(arr) {
   });
   return newArr;
 }
-module.exports = { reverseWords, titleCase, oddishOrEvenish, at, fizzBuzz };
+function anagrams(one, two) {
+  const sort1 = one.split("").sort().join("");
+  const sort2 = two.split("").sort().join("");
+  if (sort1 === sort2) return true;
+  return false;
+}
+function uniqueString(array) {
+  const normalized = array.map((string) =>
+    [...new Set(string.toLowerCase())].sort().join("")
+  );
+  if (normalized[0] !== normalized[1] && normalized[1] === normalized[2]) {
+    return array[0];
+  }
+  const index = normalized.findIndex((string, i) => {
+    const prev = normalized[i - 1];
+    const next = normalized[i + 1];
+    return i !== 0 && string !== prev && string !== next;
+  });
+  return array[index];
+}
+function uniqueCharacter(string) {
+  const split = string.split("").sort();
+  console.log(split);
+  let result = "";
+  for (let i = 1; i < split.length - 1; i++) {
+    let prev = split[i - 1];
+    let current = split[i];
+    let next = split[i + 1];
+
+    if (prev !== current && current !== next) return split[i];
+  }
+  return "_";
+}
+module.exports = {
+  reverseWords,
+  titleCase,
+  oddishOrEvenish,
+  at,
+  fizzBuzz,
+  anagrams,
+  uniqueString,
+  uniqueCharacter,
+};
