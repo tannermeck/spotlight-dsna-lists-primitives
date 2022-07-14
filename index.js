@@ -68,10 +68,43 @@ function uniqueString(array) {
     }
   }
 }
-function uniqueCharacter(string) {}
+function uniqueCharacter(string) {
+  const sort = string.split("").sort();
+  for (let i = 1; i < sort.length; i++) {
+    let prev = sort[i - 1];
+    let curr = sort[i];
+    let next = sort[i + 1];
+    if (prev !== curr && curr !== next) {
+      return sort[i];
+    }
+  }
+  return "_";
+}
 
-function equalSides(array) {}
-function isHappy(num) {}
+function equalSides(array) {
+  // [1, 2, 3, 4, 3, 2, 1]
+  for (let i = 0; i < array.length; i++) {
+    let left = array.slice(0, i).reduce((a, b) => a + b, 0);
+    console.log(left);
+    let right = array.slice(i + 1).reduce((a, b) => a + b, 0);
+    console.log(right);
+    if (left === right) return i;
+  }
+}
+function isHappy(num) {
+  let seen = {};
+  while (true) {
+    const split = num
+      .toString()
+      .split("")
+      .map((digit) => digit ** 2)
+      .reduce((a, b) => a + b, 0);
+    if (split === 1) return true;
+    if (seen[split]) return false;
+    seen[split] = true;
+    num = split;
+  }
+}
 
 module.exports = {
   reverseWords,
