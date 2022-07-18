@@ -86,9 +86,9 @@ function equalSides(array) {
   for (let i = 0; i < array.length; i++) {
     let left = array.slice(0, i).reduce((a, b) => a + b, 0);
     console.log(left);
-    let right = array.slice(i + 1).reduce((a, b) => a + b, 0);
-    console.log(right);
-    if (left === right) return i;
+    let righ = array.slice(i + 1).reduce((a, b) => a + b, 0);
+    console.log(righ);
+    if (left === righ) return i;
   }
 }
 function isHappy(num) {
